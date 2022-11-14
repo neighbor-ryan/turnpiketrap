@@ -186,13 +186,13 @@ const speakers = [
 const Home: NextPage = () => {
   const title = "Rally Against Governor Murphy's $4.7B Turnpike Expansion Through Jersey City"
   const description = "On Saturday, November 12, 2022, local officials, advocates, and citizens gathered for a rally opposing Governor Murphy's ill-advised, exorbitantly expensive highway expansion plan through the heart of Jersey City."
-  const domain = "https://turnpiketrap.neighbor-ryan.org"
+  const domain = "https://neighbor-ryan.org/turnpiketrap"
   const thumbnail = `${domain}/img/solomon-screenshot.jpeg`
   return (
       <div className={styles.container}>
         <Head>
           <title>NJ Turnpike Trap Rally</title>
-          <link rel="icon" href="/img/favicon.jpeg" />
+          <link rel="icon" href="./img/favicon.jpeg" />
           <meta name="description" content={description} />
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />

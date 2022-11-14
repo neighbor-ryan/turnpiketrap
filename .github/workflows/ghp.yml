@@ -16,6 +16,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
+        env:
+          NEXT_BASE_PATH: "/turnpiketrap"
         run: |
           npm run export
           touch ./out/.nojekyll
