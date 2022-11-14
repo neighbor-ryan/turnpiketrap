@@ -1,13 +1,16 @@
+.yt-container {
+    position: relative;
+    margin: auto;
+}
+
 @media (min-width: 320px) {
     .yt-container {
-        position: relative;
         width: 90vw;
     }
 }
 
 @media (min-width: 800px) {
     .yt-container {
-        position: relative;
         width: 60vw;
     }
 }
@@ -22,13 +25,6 @@
     cursor: pointer;
 }
 
-.yt-logo {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    cursor: pointer;
-}
-
 .yt-container > span {
     display: block;
     position: absolute;
@@ -38,5 +34,5 @@
     right: 0;
     z-index: 1;
     background: url(/img/yt.png) no-repeat center center;
-    background-size: 15%;
+    background-size: 12%;
 }
