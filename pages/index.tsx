@@ -219,6 +219,7 @@ const Home: NextPage = () => {
             {speakers.map(speaker => <Speaker key={speaker.short} {...speaker} />)}
             <Divider />
             <p><strong><a href={"https://turnpiketrap.org"}>Visit turnpiketrap.org</a> to learn more and get involved.</strong></p>
+            <p><a href={"https://github.com/bikejc/turnpiketrap"}>Site source</a></p>
           </div>
         </main>
       </div>
