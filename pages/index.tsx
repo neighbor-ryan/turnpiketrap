@@ -186,7 +186,7 @@ const speakers = [
 const Home: NextPage = () => {
   const title = "Rally Against Governor Murphy's $4.7B Turnpike Expansion Through Jersey City"
   const description = "On Saturday, November 12, 2022, local officials, advocates, and citizens gathered for a rally opposing Governor Murphy's ill-advised, exorbitantly expensive highway expansion plan through the heart of Jersey City."
-  const domain = "https://turnpiketrap.bikejc.org"
+  const domain = "https://turnpiketrap.neighbor-ryan.org"
   const thumbnail = `${domain}/img/solomon-screenshot.jpeg`
   return (
       <div className={styles.container}>
@@ -219,7 +219,7 @@ const Home: NextPage = () => {
             {speakers.map(speaker => <Speaker key={speaker.short} {...speaker} />)}
             <Divider />
             <p><strong><a href={"https://turnpiketrap.org"}>Visit turnpiketrap.org</a> to learn more and get involved.</strong></p>
-            <p><a href={"https://github.com/bikejc/turnpiketrap"}>Site source</a></p>
+            <p><a href={"https://github.com/neighbor-ryan/turnpiketrap"}>Site source</a></p>
           </div>
         </main>
       </div>
