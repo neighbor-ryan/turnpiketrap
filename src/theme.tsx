@@ -1,4 +1,4 @@
-import styles from "theme.module.css";
+import styles from "./theme.module.css";
 import {ReactNode} from "react";
 import {default as NextHead} from "next/head"
 
