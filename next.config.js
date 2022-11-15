@@ -1,8 +1,10 @@
 
+const basePath = "/turnpiketrap"
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: process.env["NEXT_BASE_PATH"],
-  assetPrefix: process.env["NEXT_BASE_PATH"],
+  basePath,
+  assetPrefix: basePath,
   reactStrictMode: true,
   swcMinify: true,
 }
