@@ -11,6 +11,7 @@ export type SpeakerFragment = {
 export type Speaker = {
     title: string
     youtubeId: string
+    blockquote?: boolean
     children: ReactNode
 } & SpeakerFragment
 
@@ -18,10 +19,13 @@ export function makeFragment({ fragment, short }: SpeakerFragment) {
     return fragment || short.toLowerCase().replace(" ", "-")
 }
 
-export function Speaker({ title, short, fragment, youtubeId, children, }: Speaker) {
+export function Speaker({ title, short, fragment, youtubeId, blockquote = true, children, }: Speaker) {
     fragment = makeFragment({ fragment, short })
+    if (blockquote) {
+        children = <blockquote>{children}</blockquote>
+    }
     if (typeof children === 'string') {
-        children = Markdown(children)
+        children = Markdown(children.toString())
     }
     return <>
         <Divider />
