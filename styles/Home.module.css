@@ -41,12 +41,6 @@
   }
 }
 
-/*h2.speaker:hover:after { content: " #"; }*/
-
-hr.divider {
-  margin: 2rem;
-}
-
 .index-list {
   display: inline-block;
   text-align: left;

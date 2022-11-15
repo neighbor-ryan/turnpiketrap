@@ -1,34 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import {ReactNode} from "react";
-import YouTubeEmbed from "../src/youtube";
-
-type SpeakerFragment = {
-  short: string
-  fragment?: string
-}
-
-type Speaker = {
-  title: string
-  youtubeId: string
-  children: ReactNode
-} & SpeakerFragment
-function makeFragment({ fragment, short }: SpeakerFragment) {
-  return fragment || short.toLowerCase().replace(" ", "-")
-}
-
-const Divider = () => <hr className={styles.divider}/>
-
-function Speaker({ title, short, fragment, youtubeId, children, }: Speaker) {
-  fragment = makeFragment({ fragment, short })
-  return <>
-    <Divider />
-    <h2 className={styles.speaker} id={fragment}><a href={`#${fragment}`} style={{ textDecoration: "none" }}>{title}</a></h2>
-    <YouTubeEmbed video={youtubeId} alt={title} />
-    {children}
-  </>
-}
+import {Divider} from "../src/theme";
+import {makeFragment, Speaker} from "../src/speaker";
 
 const speakers = [
   { title: "Barkha Patel (Jersey City Director of Infrastructure, representing Mayor Steven Fulop)", short: "Director Patel", youtubeId: "WlbYvpe6CzM", children: <>
@@ -94,21 +68,30 @@ const speakers = [
         <p>Let&apos;s go Jersey City! Let&apos;s not expand that Turnpike! Let&apos;s be for smart government! Thank you!</p>
       </blockquote>
     </>, },
-  { title: "Bill O'Dea (Hudson County Commissioner, District 2)", short: "Commissioner O'Dea", youtubeId: "mQE1GCbh4Kc", children: <>
-      <blockquote>
-        <p>I grew up on Baldwin Avenue and I could always see this [turnpike].</p>
-        <p>This was ugly in the 70&apos;s, it&apos;s still ugly today.</p>
-        <p>Expanding it is probably the dumbest thing anyone could ever think of.</p>
-        <p>[Governor] Phil Murphy, who&apos;s a friend, should just come one day, and just walk.</p>
-        <p>And after he walks about a mile, and sees the impact it&apos;s gonna have, on existing properties, on a public housing site, on Ferris high school…</p>
-        <p>I think he would realize… &quot;that&apos;s it, kill the idea.&quot;</p>
-        <p>Look, I&apos;m in favor of good public works projects. We need them.</p>
-        <p>We certainly have a lot of need for investment, even locally, in our mass transit.</p>
-        <p>We have opportunities to expand our light rail to other parts of, even the West Side of Jersey City.</p>
-        <p>So let&apos;s take those dollars, divert them into good public works projects, take them away from bad public works projects.</p>
-        <p>And let&apos;s get the Governor to do the right thing.</p>
-      </blockquote>
-    </>, },
+  { title: "Bill O'Dea (Hudson County Commissioner, District 2)", short: "Commissioner O'Dea", youtubeId: "mQE1GCbh4Kc", children: `
+> I grew up on Baldwin Avenue and I could always see this [turnpike].
+>
+> This was ugly in the 70's, it's still ugly today.
+>
+> Expanding it is probably the dumbest thing anyone could ever think of.
+>
+> [Governor] Phil Murphy, who's a friend, should just come one day, and just walk.
+>
+> And after he walks about a mile, and sees the impact it's gonna have, on existing properties, on a public housing site, on Ferris high school…
+>
+> I think he would realize… "that's it, kill the idea."
+>
+> Look, I'm in favor of good public works projects. We need them.
+>
+> We certainly have a lot of need for investment, even locally, in our mass transit.
+>
+> We have opportunities to expand our light rail to other parts of, even the West Side of Jersey City.
+>
+> So let's take those dollars, divert them into good public works projects, take them away from bad public works projects.
+>
+> And let's get the Governor to do the right thing.
+  `
+  },
   { title: "Anthony Romano (Hudson County Commissioner, District 5)", short: "Commissioner Romano", youtubeId: "Xjqm5JxU3Sk", children: <>
       <blockquote>
         <p>The Turnpike Authority has to come down and realize that there&apos;s different ways to do what they&apos;re trying to accomplish.</p>
