@@ -17,11 +17,7 @@ jobs:
         run: npm ci
       - name: Build
         run: |
-          npm run export
-          cd out
-          touch .nojekyll
-          perl -pi -e 's/="(\/_next\/static)/=".$1/g' index.html
-          perl -pi -e 's/="(\/_next\/static)/=".$1/g' 404.html
+          ./next-export.sh
       - name: Deploy GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@4.1.0
