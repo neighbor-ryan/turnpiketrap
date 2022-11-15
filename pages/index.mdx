@@ -1,6 +1,6 @@
 import {Divider, Head} from '../src/theme'
 import styles from '../styles/Home.module.css'
-import {Speaker} from "../src/speaker"
+import {Speaker, speakers, makeFragment} from "../src/speaker"
 
 export const title = "Rally Against Governor Murphy's $4.7B Turnpike Expansion Through Jersey City"
 
@@ -29,8 +29,18 @@ export default function Layout({children}) {
 
 # {title}
 
+On Saturday, November 12, 2022, local officials, advocates, and citizens gathered for a rally opposing Governor Murphy&apos;s ill-advised, exorbitantly expensive highway expansion plan through the heart of Jersey City.
+See excerpted speeches below, and **visit <a href={"https://turnpiketrap.org"}>turnpiketrap.org</a> to learn more and get involved.**
+
+<details>
+<summary>Direct links to speakers</summary>
+
+<ul className={styles['index-list']}>
+{Object.entries(speakers).map(([ short, title ]) => <li key={short}><a href={`#${makeFragment({ short })}`}>{title}</a></li>)}
+</ul>
+</details>
+
 <Speaker
-    title="Barkha Patel (Jersey City Director of Infrastructure, representing Mayor Steven Fulop)"
     short="Director Patel"
     youtubeId="WlbYvpe6CzM"
 >
@@ -53,7 +63,7 @@ the state of New Jersey is moving in the opposite direction.
 This project, without a doubt, is on the wrong side of history.
 </Speaker>
 
-<Speaker title="James Solomon (Jersey City Council, Ward E)" short="Councilman Solomon" youtubeId="GkriQVEHa2I">
+<Speaker short="Councilman Solomon" youtubeId="GkriQVEHa2I">
 Good afternoon! How's everyone doing?
 
 I hope you're good, but I also hope you're mad, 'cause this is one of the worst ideas in Hudson County in recent memory.
@@ -97,7 +107,7 @@ We're saying (hell no!) hell no we are not gonna expand this turnpike.
 Thank you.
 </Speaker>
 
-<Speaker title={`Frank "Educational" Gilmore (Jersey City Council, Ward F)`} short="Councilman Gilmore" youtubeId="lDtoiNkmi-I">
+<Speaker short="Councilman Gilmore" youtubeId="lDtoiNkmi-I">
 Sometimes, in politics, things are in a grey area, but if I've ever seen something more black and white than this extension, I don't know what it is.
 
 It just doesn't make sense, financially… in fact, if you need to find something to do with 5 billion dollars, I have a few suggestions.
@@ -117,7 +127,7 @@ We're going to send a message to Trenton and the message is simple:
 It is as simple as that.
 </Speaker>
 
-<Speaker title="Yousef Saleh (Jersey City Council, Ward D)" short="Councilman Saleh" youtubeId="7rEXA3jmOWk">
+<Speaker short="Councilman Saleh" youtubeId="7rEXA3jmOWk">
 We need to make sure that the $4.7BN is going into more shuttle buses, more bike lanes, more environmentally sustainable forms of transportation.
 
 We need to be planning for the future.
@@ -135,7 +145,7 @@ Those asthma rates are gonna keep going up.
 Let's go Jersey City! Let's not expand that Turnpike! Let's be for smart government! Thank you!
 </Speaker>
 
-<Speaker title="Bill O'Dea (Hudson County Commissioner, District 2)" short="Commissioner O'Dea" youtubeId="mQE1GCbh4Kc">
+<Speaker short="Commissioner O'Dea" youtubeId="mQE1GCbh4Kc">
 I grew up on Baldwin Avenue and I could always see this [turnpike].
 
 This was ugly in the 70's, it's still ugly today.
@@ -159,7 +169,7 @@ So let's take those dollars, divert them into good public works projects, take t
 And let's get the Governor to do the right thing.
 </Speaker>
 
-<Speaker title="Anthony Romano (Hudson County Commissioner, District 5)" short="Commissioner Romano" youtubeId="Xjqm5JxU3Sk">
+<Speaker short="Commissioner Romano" youtubeId="Xjqm5JxU3Sk">
 The Turnpike Authority has to come down and realize that there's different ways to do what they're trying to accomplish.
 
 We cannot afford more pollution.
@@ -167,7 +177,7 @@ We cannot afford more pollution.
 We cannot afford more traffic.
 </Speaker>
 
-<Speaker title="Phil Cohen (Hoboken City Council, 5th Ward)" short="Councilman Cohen" youtubeId="qyHJ4eV3YNk">
+<Speaker short="Councilman Cohen" youtubeId="qyHJ4eV3YNk">
 I think we all agree that investing in infrastructure is smart. It makes sense.
 
 Gateway project: makes sense.
@@ -185,7 +195,7 @@ We are not looking for it, we don't want it, we're here with you, we support you
 Hoboken is in the house, keep up the good work everybody.
 </Speaker>
 
-<Speaker title="Jimmy Lee (President, Safe Streets JC)" short="Jimmy Lee" youtubeId="7oxrvd39Di8">
+<Speaker short="Jimmy Lee" youtubeId="7oxrvd39Di8">
 It's November 12th.
 
 It's 70°.
@@ -201,7 +211,7 @@ We want to cut climate change in half by 2030; how can we be building more highw
 Governor Murphy: please follow the science! Thank you.
 </Speaker>
 
-<Speaker title="Chris Adair (President, Bike Hoboken)" short="Chris Adair" youtubeId="fDFdAWzIQz0">
+<Speaker short="Chris Adair" youtubeId="fDFdAWzIQz0">
 It's gonna bring more cars to our streets. More traffic.
 
 And it's going to increase air pollution.
@@ -219,7 +229,7 @@ And we want Governor Murphy to hear us loud and clear when we say **"NO"** to hi
 Thank you.
 </Speaker>
 
-<Speaker title="John Reichman (President, Empower NJ)" short="John Reichman" youtubeId="pP37lWJv-rI">
+<Speaker short="John Reichman" youtubeId="pP37lWJv-rI">
 When I tell people about Governor Murphy's Turnpike expansion, the initial response is a saltier version of: "are you kidding me?"
 
 How can you approve a project that makes no sense, on any level?
@@ -243,7 +253,7 @@ An expansion of I-95, in Connecticut: Killed.
 We have to do the same thing here.
 </Speaker>
 
-<Speaker title="Tony Borelli (Vice President, Bike JC)" short="Tony Borelli" youtubeId="eyhFVQhJhMU">
+<Speaker short="Tony Borelli" youtubeId="eyhFVQhJhMU">
 For 25 years now, I've lived right next to a really busy highway, with all of its inherent ills.
 
 But, you know, I knew what I signed up for, and I stayed here for a quarter of a century.
