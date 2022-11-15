@@ -18,7 +18,7 @@ jobs:
       - name: Build
         run: |
           export PATH="$PATH::node_modules/.bin"
-          next-export.sh
+          next-export.sh out
       - name: Deploy GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@4.1.0
