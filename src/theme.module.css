@@ -2,6 +2,6 @@ hr.divider {
     margin: 2rem;
 }
 
-h2.speaker > a {
-    text-decoration: none;
+.header > a {
+    text-decoration: none !important;
 }

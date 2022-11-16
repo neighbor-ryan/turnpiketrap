@@ -1,11 +1,13 @@
 import remarkGfm from "remark-gfm";
-import React, {ReactNode} from "react";
+import React, {DetailedHTMLProps, HTMLAttributes} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from 'rehype-raw'
-import {ReactMarkdownProps} from "react-markdown/lib/complex-types";
 import {ElementContent} from "hast";
+import {inspect} from "util";
+const {isArray} = Array;
+import styles from "./theme.module.css";
 
 function sanitizeElement(elem: any): string {
     if (typeof elem === 'string') {
@@ -23,49 +25,66 @@ function buildSlug(children: ElementContent[]) {
     return sanitizeElement(children)
 }
 
-const renderHeading = (props: ReactMarkdownProps) => {
-    // console.log("heading:", props)
-    const { node, children } = props
-    const elems = node.children
-    const TagName: React.FC<{ children: ReactNode }> = node.tagName as any
-    if (elems.length == 0) {
-        throw new Error(`No node.children found in header: ${props}, ${children}`)
+const ID_RGX = ` id=([a-zA-Z0-9-']+)$`
+
+function extractId(s: string) {
+    const match = s.match(ID_RGX)
+    return match ? { id: match[1], title: s.substring(0, match.index) } : { title: s }
+}
+
+type Props = DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
+
+const renderHeading = (
+    Tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6",
+    props: Props
+) => {
+    const { children, id, ...rest } = props
+    if (id) {
+        return <Tag {...props} />
     }
-    const lastElem: any = elems[elems.length - 1]
-    const hasVanitySlug = elems.length > 1 && lastElem.tagName == "a" && lastElem.children.length == 0
-    if (hasVanitySlug) {
-        const trimmedChildren = children.slice(0, children.length - 1)
-        const slug: string = lastElem.properties.id
-        return <a id={slug} href={`#${slug}`}><TagName>{trimmedChildren}</TagName></a>
+    // console.log("heading:", children, isArray(children))
+    if (typeof children === 'string') {
+        const {id, title} = extractId(children)
+        return id ? <Tag id={id} className={styles.header} {...rest}><a href={`#${id}`}>{title}</a></Tag> : <Tag {...props} />
+    } else if (isArray(children)){
+        const prefix = children.slice(0, children.length - 1)
+        const last = children[children.length - 1]
+        if (typeof last === 'string') {
+            const {id, title} = extractId(last)
+            const newChildren = prefix.concat([title])
+            return id ? <Tag id={id} className={styles.header} {...rest}><a href={`#${id}`}>{newChildren}</a></Tag> : <Tag {...props} />
+        }
     } else {
-        // const slug: string = buildSlug(elems)
-        // return <a id={slug} href={`#${slug}`}><TagName>{children}</TagName></a>
-        return <TagName>{ children }</TagName>
+        console.warn("Unrecognized children:", children)
     }
+    return <Tag {...props} />
+}
+
+export type Components = import("mdx/types").MDXComponents
+export const components: Components = {
+    a: ({ href, children }) =>
+        <Link href={href || "#"}>
+            <a target={href?.startsWith("http") ? "_blank" : "_self"}>
+                {children}
+            </a>
+        </Link>,
+    img: ({ src, placeholder, ...props}) => {
+        //return <Image src={src || ''} {...props} />
+        return <img src={src || ''} {...props} />
+    },
+    h1: props => renderHeading("h1", props),
+    h2: props => renderHeading("h2", props),
+    h3: props => renderHeading("h3", props),
+    h4: props => renderHeading("h4", props),
+    h5: props => renderHeading("h5", props),
+    h6: props => renderHeading("h6", props),
 }
 
 export default function Markdown(content: string) {
     return <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
-        components={{
-            a: ({ href, children }: { href?: string, children: ReactNode, }) =>
-                <Link href={href || "#"}>
-                    <a target={href?.startsWith("http") ? "_blank" : "_self"}>
-                        {children}
-                    </a>
-                </Link>,
-            img: ({node, src, placeholder, ...props}) => {
-                //return <Image src={src || ''} {...props} />
-                return <img src={src || ''} {...props} />
-            },
-            h1: renderHeading,
-            h2: renderHeading,
-            h3: renderHeading,
-            h4: renderHeading,
-            h5: renderHeading,
-            h6: renderHeading,
-        }}
+        components={components}
     >
         {content}
     </ReactMarkdown>

@@ -41,6 +41,10 @@
   }
 }
 
+.main summary {
+  cursor: pointer;
+}
+
 .index-list {
   display: inline-block;
   text-align: left;
