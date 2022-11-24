@@ -25,7 +25,7 @@ export default function YouTubeEmbed({video, alt, thumbnailQuality = 'hq720'}: P
     }
 
     return (
-        <div ref={divRef} className={`${css["yt-container"]} youtube-frame`}>
+        <div ref={divRef} className={`${css.ytContainer} youtube-frame`}>
             <img className={`${css["yt-video"]} shadow`} loading="lazy" src={`https://img.youtube.com/vi/${video}/${thumbnailQuality}.jpg`} alt={alt} />
             <span onClick={onClick} />
         </div>

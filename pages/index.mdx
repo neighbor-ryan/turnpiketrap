@@ -1,6 +1,7 @@
-import {Divider, Head} from '../src/theme'
+import {Divider} from '../src/theme'
 import styles from '../styles/Home.module.css'
 import {Speaker, speakers, makeFragment} from "../src/speaker"
+import {Head} from 'next-utils/head'
 
 export const title = "Rally Against Governor Murphy's $4.7B Turnpike Expansion Through Jersey City"
 
@@ -14,7 +15,6 @@ export default function Layout({children}) {
                 title: "NJ Turnpike Trap Rally",
                 description,
                 url,
-                favicon: "./img/favicon.jpeg",
                 thumbnail,
             }}/>
 

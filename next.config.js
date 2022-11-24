@@ -1,16 +1,21 @@
 
+const createTranspileModulesPlugin = require("next-transpile-modules");
+const withTranspileModules = createTranspileModulesPlugin(["next-utils"]);
+
 const basePath = "/turnpiketrap"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath,
-  assetPrefix: basePath,
   reactStrictMode: true,
   swcMinify: true,
+  basePath,
+  assetPrefix: basePath,
+  publicRuntimeConfig: {
+    basePath,
+  },
 }
 
 const withMDX = require('@next/mdx')({
-  ...nextConfig,
   extension: /\.mdx?$/,
   options: {
     // If you use remark-gfm, you'll need to use next.config.mjs
@@ -22,7 +27,8 @@ const withMDX = require('@next/mdx')({
     providerImportSource: "@mdx-js/react",
   },
 })
-module.exports = withMDX({
+module.exports = withTranspileModules(withMDX({
+  ...nextConfig,
   // Append the default value with md extensions
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-})
+}))
