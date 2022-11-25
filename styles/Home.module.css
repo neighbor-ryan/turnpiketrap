@@ -1,5 +1,7 @@
 .container {
-  padding: 0 2rem;
+  max-width: 50em;
+  margin: auto;
+  padding: 0 1em;
 }
 
 .main {
@@ -18,16 +20,6 @@
 
 .main-div {
   text-align: center;
-}
-@media (min-width: 320px) {
-  .main-div {
-    width: 100vw;
-  }
-}
-@media (min-width: 800px) {
-  .main-div {
-    width: 60vw;
-  }
 }
 
 @media (min-width: 320px) {

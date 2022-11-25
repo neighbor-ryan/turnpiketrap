@@ -1,4 +1,9 @@
 
+const {
+  createVanillaExtractPlugin
+} = require('@vanilla-extract/next-plugin');
+const withVanillaExtract = createVanillaExtractPlugin();
+
 const createTranspileModulesPlugin = require("next-transpile-modules");
 const withTranspileModules = createTranspileModulesPlugin(["next-utils"]);
 
@@ -27,8 +32,8 @@ const withMDX = require('@next/mdx')({
     providerImportSource: "@mdx-js/react",
   },
 })
-module.exports = withTranspileModules(withMDX({
+module.exports = withTranspileModules(withVanillaExtract(withMDX({
   ...nextConfig,
   // Append the default value with md extensions
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-}))
+})))

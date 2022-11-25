@@ -5,7 +5,6 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from 'rehype-raw'
 import {ElementContent} from "hast";
-import {inspect} from "util";
 const {isArray} = Array;
 import styles from "./theme.module.css";
 
