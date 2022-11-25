@@ -16,17 +16,11 @@ jobs:
           node-version: 16
           cache: 'npm'
           cache-dependency-path: yarn.lock
-      - name: Install
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Export
-        run: |
-          export PATH="$PATH::node_modules/.bin"
-          next export
-          touch out/.nojekyll
+      - run: npm install
+      - run: npm run build
+      - run: npm run export
       - name: Deploy to GH Pages
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: gh-pages
-          folder: out
+          folder: out/turnpiketrap

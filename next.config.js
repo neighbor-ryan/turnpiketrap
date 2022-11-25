@@ -18,6 +18,9 @@ const nextConfig = {
   publicRuntimeConfig: {
     basePath,
   },
+  images: {
+    unoptimized: true,
+  },
 }
 
 const withMDX = require('@next/mdx')({
