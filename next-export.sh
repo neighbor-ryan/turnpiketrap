@@ -6,8 +6,8 @@ dst="${@:-out/turnpiketrap}"
 next build
 next export -o "$dst"
 
-top="${dst%%/*}"
-touch "$top/.nojekyll"
+dir="${dst%/*}"
+touch "$dir/.nojekyll"
 
 cd "$dst"
 for f in *.html; do
