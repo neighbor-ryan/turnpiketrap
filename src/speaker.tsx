@@ -1,7 +1,7 @@
 import {ReactNode} from "react";
 import YouTubeEmbed from "./youtube";
 import {Divider, H2} from "./theme";
-import Markdown from "./md";
+import Markdown from "next-utils/md";
 
 export const speakers = {
     "Director Patel": "Barkha Patel (Jersey City Director of Infrastructure, representing Mayor Steven Fulop)",

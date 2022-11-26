@@ -4,6 +4,10 @@ import {Head} from 'next-utils/head'
 import Image from "next/image"
 import {ReactNode} from "react";
 import {Menu, Nav} from "next-utils/nav"
+import layoutCss from "./layout.css"
+
+// Force layout.css above to be applied
+function styleRef() { return layoutCss }
 
 export default function Layout({ menus, children, }: { menus: Menu[], children: ReactNode }) {
     const description = "On Saturday, November 12, 2022, local officials, advocates, and citizens gathered for a rally opposing Governor Murphy's ill-advised, exorbitantly expensive highway expansion plan through the heart of Jersey City."
